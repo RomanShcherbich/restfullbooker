@@ -3,11 +3,9 @@ package booker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.expect;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
 public class AuthTest {
 
@@ -34,7 +32,7 @@ public class AuthTest {
                     .extract()
                     .body()
                     .path("token");
-        assertThat(token, notNullValue());
+        assertThat(token, allOf(notNullValue(), hasLength(15)));
         Assert.assertNotNull(token);
     }
 
