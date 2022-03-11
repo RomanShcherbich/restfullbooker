@@ -1,5 +1,7 @@
 package booker;
 
+import com.google.gson.Gson;
+import model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,17 +11,16 @@ import static org.hamcrest.Matchers.*;
 
 public class AuthTest {
 
-    public static final String CREDENTIALS =
-    """
-    {
-        "username" : "admin",
-        "password" : "password123"
-    }
-    """;
+    public static final String CREDENTIALS = new Gson().toJson(new User("admin", "password123"));
+//    """
+//    {
+//        "username" : "admin",
+//        "password" : "password123"
+//    }
+//    """;
 
     @Test
     public void GetTokenTest() {
-        //
         String token = given()
                     .contentType("application/json")
                     .body(CREDENTIALS)
