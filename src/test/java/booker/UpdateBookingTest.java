@@ -21,12 +21,12 @@ public class UpdateBookingTest extends BaseTest {
     public void updateBookingTest() {
         int testBookingId = createTestBookingAndGetId();
         Booking actualBooking = given()
-                .contentType(ContentType.JSON)
+                .spec(requestSpec)
                 .cookie("token", getToken())
                 .body(getUpdatedBookingJson())
         .when()
                 .log().all()
-                .put(StringUtils.join("http://localhost:3001/", "booking/", testBookingId))
+                .put(StringUtils.join(BOOKING_ENDPOINT, testBookingId))
         .then()
                 .log().all()
                 .statusCode(200)

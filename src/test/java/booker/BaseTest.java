@@ -1,29 +1,41 @@
 package booker;
 
 import com.google.gson.Gson;
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+import lombok.SneakyThrows;
 import model.Booking;
 import model.BookingDates;
-import model.User;
+
+import java.io.File;
 
 import static io.restassured.RestAssured.given;
 
 public class BaseTest {
 
-    public static final String CREDENTIALS = new Gson().toJson(new User("admin", "password123"));
+    public static final String BASE_URL = "http://localhost:3001/";
+    public static final String BOOKING_ENDPOINT = "booking/";
     public static final Booking TEST_BOOKING = initTestBookingEntity();
     public static final String TEST_BOOKING_JSON = new Gson().toJson(TEST_BOOKING);
     private String userToken = null;
 
+    RequestSpecification requestSpec = new RequestSpecBuilder()
+            .setContentType(ContentType.JSON)
+            .setBaseUri(BASE_URL)
+            .build();
+
+
+    @SneakyThrows
     public String getToken() {
         if (userToken == null) {
             userToken = given()
-                    .contentType("application/json")
-                    .body(CREDENTIALS)
+                    .spec(requestSpec)
+                    .body(new File("src/test/resources/AdminCredentials.json"))
                     .when()
                     .log().all()
-                    .post("http://localhost:3001/auth")
+                    .post("auth")
                     .then()
                     .log().all()
                     .statusCode(200)
@@ -36,10 +48,10 @@ public class BaseTest {
 
     public ValidatableResponse createBookingRequest() {
         return given()
-                .contentType(ContentType.JSON)
+                .spec(requestSpec)
                 .body(TEST_BOOKING_JSON)
                 .when()
-                .post("http://localhost:3001/booking")
+                .post("booking")
                 .then()
                 .statusCode(200);
     }
