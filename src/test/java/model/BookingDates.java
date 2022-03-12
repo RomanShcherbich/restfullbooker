@@ -16,10 +16,10 @@ public class BookingDates  {
     @SerializedName("checkin")
     @Expose
     @Builder.Default
-    public String checkin = "2019-12-31";
+    private String checkin = "2019-12-31";
     @SerializedName("checkout")
     @Expose
     @Builder.Default
-    public String checkout = "2021-02-23";
+    private String checkout = "2021-02-23";
 
 }

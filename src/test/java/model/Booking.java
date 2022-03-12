@@ -11,21 +11,21 @@ public class Booking implements JsonModel {
 
     @SerializedName("firstname")
     @Expose
-    public String firstname;
+    private String firstname;
     @SerializedName("lastname")
     @Expose
-    public String lastname;
+    private String lastname;
     @SerializedName("totalprice")
     @Expose
-    public Integer totalPrice;
+    private Integer totalPrice;
     @SerializedName("depositpaid")
     @Expose
-    public Boolean depositPaid;
+    private Boolean depositPaid;
     @SerializedName("bookingdates")
     @Expose
-    public BookingDates bookingDates;
+    private BookingDates bookingDates;
     @SerializedName("additionalneeds")
     @Expose
-    public String additionalNeeds;
+    private String additionalNeeds;
 
 }
