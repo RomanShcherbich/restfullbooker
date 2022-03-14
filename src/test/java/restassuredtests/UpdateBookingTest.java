@@ -1,12 +1,8 @@
-package booker;
+package restassuredtests;
 
 import com.google.gson.Gson;
-import io.restassured.http.ContentType;
 import model.Booking;
-import model.BookingDates;
-import model.User;
 import org.apache.commons.lang3.StringUtils;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;

@@ -1,7 +1,5 @@
-package booker;
+package restassuredtests;
 
-import com.google.gson.Gson;
-import model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

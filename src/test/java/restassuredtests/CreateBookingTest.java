@@ -1,7 +1,5 @@
-package booker;
+package restassuredtests;
 
-import com.google.gson.Gson;
-import io.restassured.http.ContentType;
 import model.Booking;
 import org.testng.annotations.Test;
 

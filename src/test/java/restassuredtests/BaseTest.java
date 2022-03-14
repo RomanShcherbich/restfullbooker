@@ -1,4 +1,4 @@
-package booker;
+package restassuredtests;
 
 import com.google.gson.Gson;
 import io.restassured.builder.RequestSpecBuilder;
