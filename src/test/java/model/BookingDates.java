@@ -7,19 +7,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BookingDates  {
+public class BookingDates {
 
-    @SerializedName("checkin")
-    @Expose
-    @Builder.Default
-    public String checkin = "2019-12-31";
-    @SerializedName("checkout")
-    @Expose
-    @Builder.Default
-    public String checkout = "2021-02-23";
+@SerializedName("checkin")
+@Expose
+@Builder.Default
+public String checkin = "2022-03-12";
+
+@SerializedName("checkout")
+@Expose
+@Builder.Default
+public String checkout = "2022-03-20";
 
 }

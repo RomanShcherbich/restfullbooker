@@ -1,31 +1,32 @@
 package model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Booking implements JsonModel {
+public class Booking {
 
-    @SerializedName("firstname")
-    @Expose
-    public String firstname;
-    @SerializedName("lastname")
-    @Expose
-    public String lastname;
+    @Builder.Default
+    public String firstname = "test-r";
+    @Builder.Default
+    public String lastname = "test-s";
+
     @SerializedName("totalprice")
-    @Expose
-    public Integer totalPrice;
+    @Builder.Default
+    public int totalPrice = 101;
     @SerializedName("depositpaid")
-    @Expose
-    public Boolean depositPaid;
-    @SerializedName("bookingdates")
-    @Expose
-    public BookingDates bookingDates;
+    @Builder.Default
+    public boolean depositPaid = true;
+    @Builder.Default
+    public BookingDates bookingdates = new BookingDates();
     @SerializedName("additionalneeds")
-    @Expose
-    public String additionalNeeds;
+    @Builder.Default
+    public String additionalNeeds = "Massage";
 
 }
